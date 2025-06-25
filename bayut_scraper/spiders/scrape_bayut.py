@@ -14,7 +14,7 @@ class BayutSpider(scrapy.Spider):
             yield scrapy.Request(full_url, callback=self.parse_property)
 
         # Follow next page (pagination)
-        next_page = response.xpath('//a[@aria-label="Next"]/@href').get()
+        next_page = response.xpath('//a[@title="Next"]/@href').get()
         if next_page:
             yield response.follow(next_page, callback=self.parse)
 
